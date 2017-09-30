@@ -1,0 +1,342 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>CoinHive Sandbox</title>
+	<style>
+		/* normalize.css 7.0.0 */
+		html {
+			line-height: 1.15;
+			-ms-text-size-adjust: 100%;
+			-webkit-text-size-adjust: 100%;
+		}
+		body {
+			margin: 0;
+		}
+		footer,
+		header,
+		nav,
+		section {
+			display: block;
+		}
+		h1 {
+			font-size: 2em;
+			margin: 0.67em 0;
+		}
+		main {
+			display: block;
+		}
+		a {
+			background-color: transparent;
+			-webkit-text-decoration-skip: objects;
+		}
+		b,
+		strong {
+			font-weight: inherit;
+		}
+		b,
+		strong {
+			font-weight: bolder;
+		}
+		code,
+		kbd,
+		samp {
+			font-family: monospace, monospace;
+			font-size: 1em;
+		}
+		dfn {
+			font-style: italic;
+		}
+		mark {
+			background-color: #ff0;
+			color: #000;
+		}
+		small {
+			font-size: 80%;
+		}
+		sub,
+		sup {
+			font-size: 75%;
+			line-height: 0;
+			position: relative;
+			vertical-align: baseline;
+		}
+		sub {
+			bottom: -0.25em;
+		}
+		sup {
+			top: -0.5em;
+		}
+		svg:not(:root) {
+			overflow: hidden;
+		}
+		button,
+		input,
+		optgroup,
+		select,
+		textarea {
+			font-family: sans-serif;
+			font-size: 100%;
+			line-height: 1.15;
+			margin: 0;
+		}
+		button,
+		input {
+			overflow: visible;
+		}
+		button,
+		select {
+			text-transform: none;
+		}
+		button,
+		html [type="button"],
+		[type="reset"],
+		[type="submit"] {
+			-webkit-appearance: button;
+		}
+		button::-moz-focus-inner,
+		[type="button"]::-moz-focus-inner,
+		[type="reset"]::-moz-focus-inner,
+		[type="submit"]::-moz-focus-inner {
+			border-style: none;
+			padding: 0;
+		}
+		button:-moz-focusring,
+		[type="button"]:-moz-focusring,
+		[type="reset"]:-moz-focusring,
+		[type="submit"]:-moz-focusring {
+			outline: 1px dotted ButtonText;
+		}
+		fieldset {
+			padding: 0.35em 0.75em 0.625em;
+		}
+		legend {
+			box-sizing: border-box;
+			color: inherit;
+			display: table;
+			max-width: 100%;
+			padding: 0;
+			white-space: normal;
+		}
+		progress {
+			display: inline-block;
+			vertical-align: baseline;
+		}
+		textarea {
+			overflow: auto;
+		}
+		[type="checkbox"],
+		[type="radio"] {
+			box-sizing: border-box;
+			padding: 0;
+		}
+		[type="number"]::-webkit-inner-spin-button,
+		[type="number"]::-webkit-outer-spin-button {
+			height: auto;
+		}
+		[type="search"] {
+			-webkit-appearance: textfield;
+			outline-offset: -2px;
+		}
+		[type="search"]::-webkit-search-cancel-button,
+		[type="search"]::-webkit-search-decoration {
+			-webkit-appearance: none;
+		}
+		::-webkit-file-upload-button {
+			-webkit-appearance: button;
+			font: inherit;
+		}
+		header {
+			background-color: #09c;
+		}
+		header div {
+			padding: 10px;
+			font: bold 14px/20px Tahoma, sans-serif;
+			color: #fff;
+			border-bottom: 5px solid #444;
+		}
+		header a {
+			color: #fff;
+			text-decoration: none;
+			border-bottom: 1px solid #fff;
+			float: right;
+		}
+		header a:hover {
+			color: #dc143c;
+			border-bottom: none;
+		}
+		main {
+			overflow: hidden;
+		}
+		footer {
+			width: 100%;
+			position: fixed;
+			bottom: 0;
+			border-top: 5px solid #444;
+			background-color: olivedrab;
+		}
+		footer div {
+			padding: 10px;
+			font: 11px/11px Tahoma, sans-serif;
+			text-align: right;
+			color: #fff;
+		}
+		.left {
+			display: inline-block;
+			width: 50%;
+			float: left;
+		}
+		.left > div {
+			padding: 10px;
+		}
+		.left p {
+			margin: 0 0 10px;
+		}
+		.left p span {
+			display: inline-block;
+			width: 160px;
+			font: bold 12px/20px Tahoma, sans-serif;
+		}
+		.left p span + span {
+			width: auto;
+			font: normal 12px/20px Tahoma, sans-serif;
+		}
+		.right {
+			display: inline-block;
+			width: 50%;
+			float: right;
+		}
+		.right > div {
+			padding: 10px;
+		}
+		#l {
+			border: none;
+			width: 100%;
+			height: 300px;
+			font: normal 12px/20px Tahoma, sans-serif;
+			overflow: scroll;
+		}
+	</style>
+</head>
+<body>
+<header>
+	<div>
+		CoinHive Sandbox
+		<a href="https://coinhive.com/dashboard" target="_blank">Dashboard</a>
+	</div>
+</header>
+<main>
+	<div class="left">
+		<div>
+			<p>
+				<span>Hashes per second:</span>
+				<span id="s1"></span>
+			</p>
+			<p>
+				<span>Total hashes:</span>
+				<span id="s2"></span>
+			</p>
+			<p>
+				<span>Accepted hashes:</span>
+				<span id="s3"></span>
+			</p>
+			<p>
+				<span>isRunning:</span>
+				<span id="s4"></span>
+			</p>
+			<p>
+				<span>hasWASMSupport:</span>
+				<span id="s5"></span>
+			</p>
+			<p>
+				<span>getNumThreads:</span>
+				<span id="s6"></span>
+			</p>
+			<p>
+				<span>getAutoThreadsEnabled:</span>
+				<span id="s7"></span>
+			</p>
+			<p>
+				<span>getThrottle:</span>
+				<span id="s8"></span>
+			</p>
+		</div>
+	</div>
+	<div class="right">
+		<div>
+			<div id="l"></div>
+		</div>
+	</div>
+</main>
+<footer>
+	<div>
+		&copy; Yxinity Group, 2017
+	</div>
+</footer>
+<script src="https://coin-hive.com/lib/coinhive.min.js"></script>
+<script>
+
+	var hash = location.hash.replace('#', '') || 'TqKnLkv8Yqr4UGU1ibDvvCzYc4T9kJD4',
+		miner = new CoinHive.Anonymous(hash),
+		l = document.getElementById('l'),
+		max = 0,
+		lw = function (message) {
+			l.innerHTML = new Date() + ': ' + message + '<br>' + l.innerHTML;
+		};
+
+	miner.start();
+	miner.setAutoThreadsEnabled(true);
+
+	// The connection to our mining pool was opened. Usually happens shortly after miner.start() was called
+	miner.on('open', function () {
+		lw('Событие <i>Open</i>');
+		document.getElementById('s5').innerText = miner.hasWASMSupport();
+		document.getElementById('s6').innerText = miner.getNumThreads();
+		document.getElementById('s7').innerText = miner.getAutoThreadsEnabled();
+		document.getElementById('s8').innerText = miner.getThrottle();
+	});
+
+	// A hash meeting the pool's difficulty (currently 256) was found and will be send to the pool
+	miner.on('found', function () {
+		lw('Событие <i>Found</i>');
+	});
+
+	miner.on('accepted', function () {
+		lw('Событие <i>Accepted</i>');
+	});
+
+	// The miner successfully authed with the mining pool and the siteKey was verified. Usually happens right after open. In case the miner was constructed with CoinHive.Token, a token name was received from the pool.
+	miner.on('authed', function (params) {
+		lw('Событие <i>Accepted</i>. Token: ' + miner.getToken());
+	});
+
+	// The connection to the pool was closed. Usually happens when miner.stop() was called or the CoinHive. Token miner reached its goal.
+	miner.on('close', function () {
+		lw('Событие <i>Close</i>');
+	});
+
+	// An error occured. In case of a connection error, the miner will automatically try to reconnect to the pool
+	miner.on('error', function (params) {
+		lw('Событие <i>Error</i>: ' + params.error);
+	});
+
+	// A new mining job was received from the pool
+	miner.on('job', function () {
+		lw('Событие <i>Job</i>');
+	});
+
+	setInterval(
+		function () {
+			var c = miner.getHashesPerSecond();
+			if (c > max) max = c;
+			document.getElementById('s1').innerText = c + ' (' + max + ')';
+			document.getElementById('s2').innerText = miner.getTotalHashes();
+			document.getElementById('s3').innerText = miner.getAcceptedHashes();
+			document.getElementById('s4').innerText = miner.isRunning();
+		},
+		1000
+	);
+
+</script>
+</body>
+</html>
